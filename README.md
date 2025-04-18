@@ -16,7 +16,7 @@ Una sencilla aplicación web del clima construida con **HTML**, **CSS** y **Java
 
 ## 🖼️ Vista previa
 
-![alt text](<Captura de pantalla 2025-04-18 162705.png>)
+![alt text](image.png)
 
 ---
 
