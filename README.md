@@ -35,3 +35,45 @@ Una sencilla aplicación web del clima construida con **HTML**, **CSS** y **Java
 3. Puedes usarla directamente en `script.js`:
    ```js
    const apiKey = "TU_API_KEY_AQUÍ";
+
+
+
+## 🧪 Cómo probar
+
+1. Clona el Repositorio:
+
+    ```bash
+    git clone https://github.com/tu-usuario/weather-app.git
+    cd weather-app
+    ```
+2. Abre index.html en tu navegador.
+
+3. Escribe una ciudad, aunque si quieres puedes añadir el país para que sea más específico, y haz click en Search.
+
+
+## 📌 Ideas para mejorar
+
+- Mostrar más datos: humedad, presión, viento
+
+- Agregar un pronóstico de 5 o 10 días
+
+- Soporte para varios idiomas
+
+- Autocompletado de ciudades
+
+- Modo oscuro 🌙
+
+- Animaciones o íconos dinámicos del clima
+
+
+## Licencia
+
+Este proyecto es de uso libre y educativo.
+Puedes adaptarlo, modificarlo y compartirlo. ¡Las estrellas en GitHub son bienvenidas! ⭐
+
+## 🙌 Créditos
+
+Desarrollado por OscarLP0909
+
+Datos del clima por OpenWeather
+
