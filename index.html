@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <link href="styles.css" rel="stylesheet" />
-  <title>Weather App</title>
+  <title>APP del Tiempo</title>
 </head>
 <body>
     <main>
       <section id="weather-wrapper">
-        <h1>Weather App</h1>
+        <h1>APP del Tiempo</h1>
         <div id="weather-search">
-          <input id="search" type="text" placeholder="Search by city" />
+          <input id="search" type="text" placeholder="City, Country Code (e.g. Madrid, ES)" />
           <input id="submit" type="submit" onclick="fetchWeather()" value="Search" />
         </div>
         <div id="weather-data" style="display: none;"></div>
       </section>
     </main>
+    <script src="config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
