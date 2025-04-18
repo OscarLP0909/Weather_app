@@ -5,12 +5,15 @@
   }
   
   body {
-    background-image: url(https://bit.ly/4bcK1Hc);
+    background-image: url("https://images.unsplash.com/photo-1526643039088-4120914af193?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-repeat: no-repeat;
     background-size: cover;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-position: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     height: 100vh;
   }
+  
+  
 
   main {
     background-color: rgba(227, 193, 173, 0.85);
