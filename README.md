@@ -23,7 +23,7 @@ Una sencilla aplicación web del clima construida con **HTML**, **CSS** y **Java
 ## 🛠️ Tecnologías usadas
 
 - **HTML5**
-- **CSS3** (con Flexbox)
+- **CSS3**
 - **JavaScript (ES6+)**
 - **OpenWeather API**
 
