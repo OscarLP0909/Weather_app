@@ -76,3 +76,7 @@
     border-radius: 50%;
     background-color: lightskyblue;
   }
+
+  .weatherdata  {
+    margin-bottom: 5px;
+  }
