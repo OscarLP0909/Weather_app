@@ -60,8 +60,8 @@ async function fetchWeather() {
         weatherDataSection.style.backgroundColor = "#f9f9f9";
         weatherDataSection.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
         weatherDataSection.innerHTML = `
-    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" />
-    <div style="margin-top: 10px; font-size: 1em; color: #333; text-align: left; width: 100%;">
+    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="${data.weather[0].description}" width="100" />
+    <div style="margin-top: 5px; font-size: 1em; color: #333; text-align: left; width: 100%;">
       <h2 style="text-align: center;">${displayName}, ${data.sys.country}</h2>
       <p><strong>Temperature:</strong> ${Math.round(data.main.temp - 273.15)}°C</p>
       <p><strong>Description:</strong> ${data.weather[0].description}</p>
@@ -77,7 +77,7 @@ async function fetchWeather() {
         weatherDataSection.style.width = "300px"; // Set a fixed width for the weather data section
         weatherDataSection.style.maxWidth = "90%"; // Ensure it doesn't exceed the viewport width
         weatherDataSection.style.marginTop = "10px"; // Center the section horizontally
-        
+
       }
       
   
