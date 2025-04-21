@@ -53,7 +53,7 @@ Una sencilla aplicación web del clima construida con **HTML**, **CSS** y **Java
 
 ## 📌 Ideas para mejorar
 
-- Mostrar más datos: humedad, presión, viento
+- Mostrar más datos: humedad, presión, viento  ✅​
 
 - Agregar un pronóstico de 5 o 10 días
 
