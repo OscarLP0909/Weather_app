@@ -92,4 +92,11 @@ async function fetchWeather() {
       await getWeatherData(geocodeData.lon, geocodeData.lat, geocodeData.name);
     }
   }
+
+  document.getElementById("search").addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Evita el comportamiento predeterminado
+      fetchWeather(); // Llama a la función para buscar el clima
+    }
+  });
   
