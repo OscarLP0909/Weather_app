@@ -15,7 +15,7 @@
   }
   
   main {
-    background-color: rgba(208, 192, 183, 0.85);
+    background-color: rgba(113, 109, 107, 0.9);
     position: relative;
     border: 1px solid;
     border-radius: 5px;
@@ -41,7 +41,7 @@
   #submit {
     border-radius: 0 5px 5px 0;
     border: none;
-    background-color: #4CAF50;
+    background-color: blueviolet;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -88,4 +88,9 @@
 
   .weatherdata  {
     margin-bottom: 5px;
+  }
+
+  .weatherh2 {
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
