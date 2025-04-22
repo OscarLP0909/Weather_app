@@ -51,6 +51,7 @@ async function fetchWeather() {
       
         weatherDataSection.style.display = "flex";
         weatherDataSection.style.flexDirection = "column";
+        weatherDataSection.style.boxSizing = "border-box";
         weatherDataSection.style.alignItems = "center";
         weatherDataSection.style.justifyContent = "center";
         weatherDataSection.style.textAlign = "center";
@@ -58,13 +59,13 @@ async function fetchWeather() {
         weatherDataSection.style.borderRadius = "10px";
         weatherDataSection.style.backgroundColor = "#f9f9f9";
         weatherDataSection.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-        weatherDataSection.style.padding = "20px";
+        /*weatherDataSection.style.padding = "20px";
         weatherDataSection.style.width = "300px"; // Set a fixed width for the weather data section
         weatherDataSection.style.maxWidth = "90%"; // Ensure it doesn't exceed the viewport width
         weatherDataSection.style.marginTop = "10px"; // Center the section horizontally
         weatherDataSection.style.fontFamily = "Arial, sans-serif";
         weatherDataSection.style.fontSize = "16px";
-        weatherDataSection.style.color = "#333";
+        weatherDataSection.style.color = "#333";*/
         weatherDataSection.innerHTML = `
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" alt="${data.weather[0].description}" width="100" />
         <div style="margin-top: 5px; font-size: 1em; color: #333; text-align: left; width: 100%;">
@@ -80,10 +81,6 @@ async function fetchWeather() {
           <p class="weatherdata"><strong>Sunset:</strong> ${new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
         </div>
         `;
-        weatherDataSection.style.padding = "20px";
-        weatherDataSection.style.width = "300px"; // Set a fixed width for the weather data section
-        weatherDataSection.style.maxWidth = "90%"; // Ensure it doesn't exceed the viewport width
-        weatherDataSection.style.marginTop = "10px"; // Center the section horizontally
 
       }
       
