@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="styles.css" rel="stylesheet" />
-  <title>APP del Tiempo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
-      <section id="weather-wrapper">
-        <h1>Weather APP</h1>
-        <div id="weather-search">
-          <input id="search" type="text" placeholder="City, Country Code (e.g. Madrid, ES)" />
-          <input id="submit" type="submit" onclick="fetchWeather()" value="Search" />
-        </div>
-        <div id="weather-data" style="display: none;"></div>
-      </section>
-    </main>
-    <script src="config.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <main>
+    <h1>Weather App</h1>
+    <div id="weather-search">
+      <input type="text" id="search" placeholder="City, Country Code (e.g., Madrid, ES)" />
+      <button id="submit">Search</button>
+    </div>
+    <div id="autocomplete-list"></div>
+    <div id="weather-data"></div>
+  </main>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
