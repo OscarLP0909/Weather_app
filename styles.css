@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     height: 100vh;
   }
@@ -16,7 +17,6 @@
   main {
     background-color: rgba(208, 192, 183, 0.85);
     position: relative;
-    top: 30%;
     border: 1px solid;
     border-radius: 5px;
     min-width: 540px;
@@ -52,6 +52,11 @@
   #weather-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: auto;
     place-items: center;
     justify-content: space-between;
   }
@@ -64,9 +69,13 @@
   #weather-data {
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 5px;
-    padding: 1.5em;
-    margin-top: 20px;
-  
+    padding: 1em;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    box-sizing: border-box;
     text-align: center;
     align-items: center;
     gap: 12px;
@@ -78,9 +87,5 @@
   }
 
   .weatherdata  {
-    margin-bottom: 5px;
-  }
-
-  .weatherh2 {
     margin-bottom: 5px;
   }
