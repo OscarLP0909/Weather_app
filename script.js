@@ -49,6 +49,7 @@ async function fetchWeather() {
       <p class="weatherdata"><strong>Wind Speed:</strong> ${weatherData.wind.speed} m/s</p>
       <p class="weatherdata"><strong>Pressure:</strong> ${weatherData.main.pressure} hPa</p>
       <p class="weatherdata"><strong>Visibility:</strong> ${weatherData.visibility / 1000} km</p>
+      <p class="weatherdata"><strong>Cloudiness:</strong> ${weatherData.clouds.all}%</p>
       <img src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="${weatherData.weather[0].description}" />
     `;
   } catch (error) {
