@@ -99,4 +99,10 @@ async function fetchWeather() {
       fetchWeather(); // Llama a la función para buscar el clima
     }
   });
+
+  document.getElementById("search").addEventListener("input", () => {
+    const weatherDataSection = document.getElementById("weather-data");
+    weatherDataSection.innerHTML = ""; // Limpia los datos anteriores
+    weatherDataSection.style.display = "none"; // Oculta la sección si no hay datos
+  });
   
