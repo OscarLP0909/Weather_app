@@ -1,108 +1,59 @@
-async function fetchWeather() {
-    let searchInput = document.getElementById("search").value;
-    const weatherDataSection = document.getElementById("weather-data");
-    weatherDataSection.style.display = "block";
-    const apiKey = config.apiKey;
-  
-    if (searchInput === "") {
-      weatherDataSection.innerHTML = `
-        <div>
-          <h2>Empty Input!</h2>
-          <p>Please try again with a valid <u>city name</u>.</p>
-        </div>
-      `;
-      return;
-    }
-  
-    async function getLonAndLat() {
-      const countryCode = 34; // Spain?
-      const geocodeURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput.replace(" ", "%20")}&limit=1&appid=${apiKey}`;
-  
-      const response = await fetch(geocodeURL);
-      if (!response.ok) {
-        console.log("Bad response ", response.status);
-        return;
-      }
-  
-      const data = await response.json();
-        console.log("Geocode data: ", data);
-  
-      if (data.length === 0) {
-        console.log("No data returned from geocoding API.");
-        weatherDataSection.innerHTML = `
-          <div>
-            <h2>Invalid Input: "${searchInput}"</h2>
-            <p>Please try again with a valid <u><i>city name</i></u>.</p>
-          </div>
-        `;
-        return;
-      } else {
-        console.log("Geocode data: ", data);
-        return data[0]; 
-      }
-    }
-  
-    async function getWeatherData(lon, lat, displayName) {
-        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-        const response = await fetch(weatherURL);
-        const data = await response.json();
-      
-        console.log("Weather data:", data);
-      
-        weatherDataSection.style.display = "flex";
-        weatherDataSection.style.flexDirection = "column";
-        weatherDataSection.style.boxSizing = "border-box";
-        weatherDataSection.style.alignItems = "center";
-        weatherDataSection.style.justifyContent = "center";
-        weatherDataSection.style.textAlign = "center";
-        weatherDataSection.style.border = "1px solid #ccc";
-        weatherDataSection.style.borderRadius = "10px";
-        weatherDataSection.style.backgroundColor = "#f9f9f9";
-        weatherDataSection.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-        /*weatherDataSection.style.padding = "20px";
-        weatherDataSection.style.width = "300px"; // Set a fixed width for the weather data section
-        weatherDataSection.style.maxWidth = "90%"; // Ensure it doesn't exceed the viewport width
-        weatherDataSection.style.marginTop = "10px"; // Center the section horizontally
-        weatherDataSection.style.fontFamily = "Arial, sans-serif";
-        weatherDataSection.style.fontSize = "16px";
-        weatherDataSection.style.color = "#333";*/
-        weatherDataSection.innerHTML = `
-        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" alt="${data.weather[0].description}" width="100" />
-        <div style="margin-top: 5px; font-size: 1em; color: #333; text-align: left; width: 100%;">
-          <h2 class = "weatherh2" style="text-align: center;">${displayName}, ${data.sys.country}</h2>
-          <p class="weatherdata"><strong>Temperature:</strong> ${Math.round(data.main.temp - 273.15)}°C</p>
-          <p class="weatherdata"><strong>Description:</strong> ${data.weather[0].description}</p>
-          <p class="weatherdata"><strong>Humidity:</strong> ${data.main.humidity}%</p>
-          <p class="weatherdata"><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
-          <p class="weatherdata"><strong>Pressure:</strong> ${data.main.pressure} hPa</p>
-          <p class="weatherdata"><strong>Visibility:</strong> ${data.visibility / 1000} km</p>
-          <p class="weatherdata"><strong>Cloudiness:</strong> ${data.clouds.all}%</p>
-          <p class="weatherdata"><strong>Sunrise:</strong> ${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-          <p class="weatherdata"><strong>Sunset:</strong> ${new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-        </div>
-        `;
+const apiKey = config.apiKey; // Reemplaza con tu clave de OpenWeather
 
-      }
-      
-  
-    document.getElementById("search").value = "";
-  
-    const geocodeData = await getLonAndLat();
-    if (geocodeData) {
-      await getWeatherData(geocodeData.lon, geocodeData.lat, geocodeData.name);
-    }
+document.getElementById("submit").addEventListener("click", fetchWeather);
+document.getElementById("search").addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    fetchWeather();
+  }
+});
+
+async function fetchWeather() {
+  const searchInput = document.getElementById("search").value;
+  const weatherDataSection = document.getElementById("weather-data");
+  weatherDataSection.innerHTML = "";
+
+  if (!searchInput) {
+    weatherDataSection.innerHTML = `<p>Please enter a valid city name.</p>`;
+    return;
   }
 
-  document.getElementById("search").addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault(); // Evita el comportamiento predeterminado
-      fetchWeather(); // Llama a la función para buscar el clima
-    }
-  });
+  const geocodeURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=1&appid=${apiKey}`;
+  try {
+    const geocodeResponse = await fetch(geocodeURL);
+    console.log("Geocode Response:", geocodeResponse);
+    const geocodeData = await geocodeResponse.json();
+    console.log("Geocode Data:", geocodeData);
 
-  document.getElementById("search").addEventListener("input", () => {
-    const weatherDataSection = document.getElementById("weather-data");
-    weatherDataSection.innerHTML = ""; // Limpia los datos anteriores
-    weatherDataSection.style.display = "none"; // Oculta la sección si no hay datos
-  });
-  
+    if (geocodeData.length === 0) {
+      weatherDataSection.innerHTML = `<p>City not found. Please try again.</p>`;
+      return;
+    }
+
+    const { lat, lon, name, country } = geocodeData[0];
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    const weatherResponse = await fetch(weatherURL);
+    console.log("Weather Response:", weatherResponse);
+    const weatherData = await weatherResponse.json();
+    console.log("Weather Data:", weatherData);
+
+    if (!weatherData || weatherData.cod !== 200) {
+      throw new Error("Invalid weather data");
+    }
+
+    weatherDataSection.innerHTML = `
+      <h2>${name}, ${country}</h2>
+      <p class="weatherdata"><strong>Temperature:</strong> ${Math.round(weatherData.main.temp)}°C</p>
+      <p class="weatherdata"><strong>Description:</strong> ${weatherData.weather[0].description}</p>
+      <p class="weatherdata"><strong>Humidity:</strong> ${weatherData.main.humidity}%</p>
+      <p class="weatherdata"><strong>Wind Speed:</strong> ${Math.round(weatherData.wind.speed) * 3.6} km/h</p>
+      <p class="weatherdata"><strong>Pressure:</strong> ${weatherData.main.pressure} hPa</p>
+      <p class="weatherdata"><strong>Visibility:</strong> ${weatherData.visibility / 1000} km</p>
+      <p class="weatherdata"><strong>Cloudiness:</strong> ${weatherData.clouds.all} %</p>
+      <img src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="${weatherData.weather[0].description}" />
+    `;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    weatherDataSection.innerHTML = `<p>Error fetching weather data. Please try again later.</p>`;
+  }
+}
