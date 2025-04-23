@@ -43,10 +43,10 @@ async function fetchWeather() {
 
     weatherDataSection.innerHTML = `
       <h2>${name}, ${country}</h2>
-      <p class="weatherdata"><strong>Temperature:</strong> ${weatherData.main.temp}°C</p>
+      <p class="weatherdata"><strong>Temperature:</strong> ${Math.round(weatherData.main.temp)}°C</p>
       <p class="weatherdata"><strong>Description:</strong> ${weatherData.weather[0].description}</p>
       <p class="weatherdata"><strong>Humidity:</strong> ${weatherData.main.humidity}%</p>
-      <p class="weatherdata"><strong>Wind Speed:</strong> ${weatherData.wind.speed} m/s</p>
+      <p class="weatherdata"><strong>Wind Speed:</strong> ${Math.round(weatherData.wind.speed) * 3.6} km/h</p>
       <p class="weatherdata"><strong>Pressure:</strong> ${weatherData.main.pressure} hPa</p>
       <p class="weatherdata"><strong>Visibility:</strong> ${weatherData.visibility / 1000} km</p>
       <p class="weatherdata"><strong>Cloudiness:</strong> ${weatherData.clouds.all}%</p>
