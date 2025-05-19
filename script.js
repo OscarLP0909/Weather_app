@@ -43,6 +43,7 @@ async function fetchWeather() {
       throw new Error("Invalid weather data");
     }
 
+    weatherDataSection.style.display = "flex";
     weatherDataSection.innerHTML = `
       <h2>${name}, ${country}</h2>
       <p class="weatherdata"><strong>Temperature:</strong> ${Math.round(weatherData.main.temp)}°C</p>
