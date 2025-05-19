@@ -8,6 +8,8 @@ document.getElementById("search").addEventListener("keypress", (event) => {
   }
 });
 
+
+
 async function fetchWeather() {
   const searchInput = document.getElementById("search").value;
   const weatherDataSection = document.getElementById("weather-data");
@@ -57,3 +59,7 @@ async function fetchWeather() {
     weatherDataSection.innerHTML = `<p>Error fetching weather data. Please try again later.</p>`;
   }
 }
+
+window.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("search").value = "";
+});
