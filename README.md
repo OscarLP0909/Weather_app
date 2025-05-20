@@ -59,10 +59,6 @@ Una sencilla aplicación web del clima construida con **HTML**, **CSS** y **Java
 
 - Soporte para varios idiomas
 
-- Autocompletado de ciudades
-
-- Modo oscuro 🌙
-
 - Animaciones o íconos dinámicos del clima
 
 
