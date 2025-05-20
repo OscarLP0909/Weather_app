@@ -1,4 +1,4 @@
-const apiKey = config.apiKey; // Reemplaza con tu clave de OpenWeather
+const apiKey = config.apiKey;
 
 document.getElementById("submit").addEventListener("click", fetchWeather);
 document.getElementById("search").addEventListener("keypress", (event) => {
